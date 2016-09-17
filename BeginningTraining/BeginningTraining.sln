@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ride", "Ride\Ride.vcxproj", "{1D2E7734-4D6B-42B5-B7C1-E819DCEE0F1D}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FridayThirteenth", "FridayThirteenth\FridayThirteenth.vcxproj", "{2475AFF9-0D3A-4273-842C-5336BF8F41FF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FencePainting", "FencePainting\FencePainting.vcxproj", "{D6131BF9-4703-431D-A233-0C9CC40E6F50}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PromotionCounting", "PromotionCounting\PromotionCounting.vcxproj", "{1B36AF95-A0DE-4C3C-B7B8-4BEFBA5DFF6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,14 @@ Global
 		{D6131BF9-4703-431D-A233-0C9CC40E6F50}.Release|x64.Build.0 = Release|x64
 		{D6131BF9-4703-431D-A233-0C9CC40E6F50}.Release|x86.ActiveCfg = Release|Win32
 		{D6131BF9-4703-431D-A233-0C9CC40E6F50}.Release|x86.Build.0 = Release|Win32
+		{1B36AF95-A0DE-4C3C-B7B8-4BEFBA5DFF6A}.Debug|x64.ActiveCfg = Debug|x64
+		{1B36AF95-A0DE-4C3C-B7B8-4BEFBA5DFF6A}.Debug|x64.Build.0 = Debug|x64
+		{1B36AF95-A0DE-4C3C-B7B8-4BEFBA5DFF6A}.Debug|x86.ActiveCfg = Debug|Win32
+		{1B36AF95-A0DE-4C3C-B7B8-4BEFBA5DFF6A}.Debug|x86.Build.0 = Debug|Win32
+		{1B36AF95-A0DE-4C3C-B7B8-4BEFBA5DFF6A}.Release|x64.ActiveCfg = Release|x64
+		{1B36AF95-A0DE-4C3C-B7B8-4BEFBA5DFF6A}.Release|x64.Build.0 = Release|x64
+		{1B36AF95-A0DE-4C3C-B7B8-4BEFBA5DFF6A}.Release|x86.ActiveCfg = Release|Win32
+		{1B36AF95-A0DE-4C3C-B7B8-4BEFBA5DFF6A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
