@@ -54,6 +54,6 @@ int main() {
 		bSegments[b] = c;
 		bSpeed[b] = d;
 	}
-	fout << speedingTicket(segments, speedLimits, bSegments, bSpeed) << endl;
+	cout << speedingTicket(segments, speedLimits, bSegments, bSpeed) << endl;
 	return 0;
 }

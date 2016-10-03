@@ -120,6 +120,9 @@
   <ItemGroup>
     <ClCompile Include="speeding.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="speeding.in" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
