@@ -7,28 +7,49 @@ using namespace std;
 
 int hayBales(int n, vector<int> &bales) {
 	sort(bales.begin(), bales.end());
-	int time = 1;
 	int highest = 0;
+	int nOB = n - 1;
 	for (int i = 0; i < n; ++i) {
-		int time = 1;
-		int counter = 0;
+		int ltime = 1;
+		int rtime = 1;
+		int left = i;
+		int right = i;
+		bool lExploding = true;
+		bool rExploding = true;
+		while (lExploding) {
+			if (left < 0) {
+				left = 0;
+				lExploding = false;
+			}
+			else {
+				int leftBound = bales[left] - ltime;
+				lExploding = false;
+				while (left > 0 && bales[left - 1] >= leftBound) {
+					left -= 1;
+					lExploding = true;
+				}
+				ltime += 1;
+			}
+		}
+		while (rExploding) {
+			if (right > nOB) {
+				right = nOB;
+				rExploding = false;
+			}
+			else {
+				int rightBound = bales[right] + rtime;
+				rExploding = false;
+				while (right < nOB && bales[right + 1] <= rightBound) {
+					right += 1;
+					rExploding = true;
+				}
+				rtime += 1;
+			}
+		}
+		int c = (right - left) + 1;
 		
-		if (bales[i] + time == bales[i + time]) {
-			while (bales[i] + time == bales[i + time]) {
-				counter += 1;
-				time += 1;
-			}
-		}
-
-		else if (bales[i] - time == bales[i - time]) {
-			while (bales[i] - time == bales[i - time]) {
-				counter += 1;
-				time += 1;
-			}
-		}
-
-		if (counter > highest) {
-			highest = counter;
+		if (c > highest) {
+			highest = c;
 		}
 	}
 	return highest;
@@ -45,6 +66,6 @@ int main() {
 		fin >> h;
 		bales[b] = h;
 	}
-	cout << hayBales(n, bales) << endl;
+	fout << hayBales(n, bales) << endl;
 	return 0;
 }

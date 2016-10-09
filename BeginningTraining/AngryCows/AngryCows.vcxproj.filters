@@ -23,5 +23,8 @@
     <None Include="angry.in">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="angry.out">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
