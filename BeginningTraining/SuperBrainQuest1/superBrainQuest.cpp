@@ -14,6 +14,7 @@ Helen is correct because six has 4 multiples (1, 2, 3, and 6) which is a large a
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -42,14 +43,79 @@ void primeNums(int n, vector<int> &primes) {
 	}
 }
 
+void factor(const int n, const vector<int> &primes, vector<int> &factors) {
+	int x = 0;
+	while (primes[x] * primes[x] <= n) {
+		if (n % primes[x] == 0) {
+			factors.push_back(primes[x]);
+			if (n / primes[x] == 1) {
+				return;
+			}
+			else {
+				factor(n / primes[x], primes, factors);
+				return;
+			}
+		}
+		x += 1;
+	}
+	factors.push_back(n);
+}
+
+
+
 int main() {
 	vector<int> primes;
 	primes.reserve(10000);
 	int n = 10000;
 	primeNums(n, primes);
+	/*
 	for (int p : primes) {
 		cout << p << " ";
 	}
+	*/
+	vector<int> factors;
+	int fn = 9;
+	factor(fn, primes, factors);
+
+	string c = " = ";
+	cout << fn;
+	for (int f : factors) {
+		cout << c << f;
+		c = " * ";
+	}
+	cout << endl;
+
+	vector<int> nFactors;
+	vector<int> bFactors;
+	for (int j : primes) {
+		int next = (6 * j) + 1;
+		int before = (6 * j) - 1;
+		nFactors.clear(); 
+		factor(next, primes, nFactors);
+		bFactors.clear();
+		factor(before, primes, bFactors);
+		if (nFactors.size() > 3) {
+			string c = " = ";
+			cout << "(6 * " << j << ")+1";
+			for (int f : nFactors) {
+				cout << c << f;
+				c = " * ";
+			}
+			cout << endl;
+		}
+		if (bFactors.size() > 3) {
+			string c = " = ";
+			cout << "(6 * " << j << ")-1";
+			for (int f : bFactors) {
+				cout << c << f;
+				c = " * ";
+			}
+			cout << endl;
+		}
+	}
+
+
+
 	return 0;
 }
 
