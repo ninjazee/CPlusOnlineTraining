@@ -27,6 +27,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuperBrainQuest1", "SuperBr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Circular Barn", "Circular Barn\Circular Barn.vcxproj", "{87CFB968-767F-408F-94D5-46853ED0C33D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ContaminatedMilk", "ContaminatedMilk\ContaminatedMilk.vcxproj", "{65CBA901-88A6-4A42-B357-CF9189E4DEF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -131,6 +133,14 @@ Global
 		{87CFB968-767F-408F-94D5-46853ED0C33D}.Release|x64.Build.0 = Release|x64
 		{87CFB968-767F-408F-94D5-46853ED0C33D}.Release|x86.ActiveCfg = Release|Win32
 		{87CFB968-767F-408F-94D5-46853ED0C33D}.Release|x86.Build.0 = Release|Win32
+		{65CBA901-88A6-4A42-B357-CF9189E4DEF3}.Debug|x64.ActiveCfg = Debug|x64
+		{65CBA901-88A6-4A42-B357-CF9189E4DEF3}.Debug|x64.Build.0 = Debug|x64
+		{65CBA901-88A6-4A42-B357-CF9189E4DEF3}.Debug|x86.ActiveCfg = Debug|Win32
+		{65CBA901-88A6-4A42-B357-CF9189E4DEF3}.Debug|x86.Build.0 = Debug|Win32
+		{65CBA901-88A6-4A42-B357-CF9189E4DEF3}.Release|x64.ActiveCfg = Release|x64
+		{65CBA901-88A6-4A42-B357-CF9189E4DEF3}.Release|x64.Build.0 = Release|x64
+		{65CBA901-88A6-4A42-B357-CF9189E4DEF3}.Release|x86.ActiveCfg = Release|Win32
+		{65CBA901-88A6-4A42-B357-CF9189E4DEF3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

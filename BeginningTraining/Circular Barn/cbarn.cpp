@@ -43,6 +43,6 @@ int main() {
 		fin >> r;
 		rooms[j] = r;
 	}
-	cout << circularBarn(n, rooms) << endl;
+	fout << circularBarn(n, rooms) << endl;
 	return 0;
 }
