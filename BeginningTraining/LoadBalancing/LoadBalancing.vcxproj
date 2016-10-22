@@ -120,6 +120,9 @@
   <ItemGroup>
     <ClCompile Include="balancing.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="balancing.in" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

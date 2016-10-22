@@ -16,15 +16,52 @@ struct TupleCompare
 	}
 };
 
-int loadBalancing(vector<int> &xValues, vector<int> &yValues, vector<tuple<int, int>> &coords) {
+int loadBalancing(int n, vector<int> &xValues, vector<int> &yValues, vector<tuple<int, int>> &coords) {
+	// sort the vectors
 	sort(xValues.begin(), xValues.end());
 	sort(yValues.begin(), yValues.end());
 	sort(coords.begin(), coords.end(), TupleCompare<0>());
 
-	int xBest = 0;
-	for (int x : xValues) {
-		int vLine = x + 1;
+	// go through every vertical line
+	int best = numeric_limits<int>::max();
+	for (int i = 0; i < (int)xValues.size()-1; ++i) {
+		int xValue = xValues[i];
+		int xLine = xValue + 1;
+		// go through every horizontal line
+		for (int j = 0; j < (int)yValues.size()-1; ++j) {
+			int yValue = yValues[j];
+			int yLine = yValue + 1;
+			int q1 = 0;
+			int q2 = 0;
+			int q3 = 0;
+			int q4 = 0;
+			for (int k = 0; k < (int)coords.size(); ++k) {
+				tuple<int, int> coord = coords[k];
+				// assign cows to quadrants created by lines
+				if (get<0>(coord) > xLine && get<1>(coord) > yLine) {
+					q1 += 1;
+				}
+				else if (get<0>(coord) < xLine && get<1>(coord) > yLine) {
+					q2 += 1;
+				}
+				else if (get<0>(coord) < xLine && get<1>(coord) < yLine) {
+					q3 += 1;
+				}
+				else if (get<0>(coord) > xLine && get<1>(coord) < yLine) {
+					q4 += 1;
+				}
+			}
+			// find which quadrant has the most
+			int maximum = max(max(q1, q2), max(q3, q4));
+
+
+			if (maximum < best) {
+				best = maximum;
+			}
+		}
 	}
+
+	return best;
 }
 
 int main() {
@@ -46,6 +83,6 @@ int main() {
 		coords[i] = coord;
 	}
 
-	fout << loadBalancing(xValues, yValues, coords) << endl;
+	fout << loadBalancing(n, xValues, yValues, coords) << endl;
 	return 0;
 }

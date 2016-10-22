@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MowingTheField", "MowingThe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LoadBalancing", "LoadBalancing\LoadBalancing.vcxproj", "{15A15B3F-4EBA-44DA-A20F-3B3395DC646F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LoadBalancingSilverPlatinum", "LoadBalancingSilverPlatinum\LoadBalancingSilverPlatinum.vcxproj", "{FBA55E8B-25A3-452C-947D-70B42F22018C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -171,6 +173,14 @@ Global
 		{15A15B3F-4EBA-44DA-A20F-3B3395DC646F}.Release|x64.Build.0 = Release|x64
 		{15A15B3F-4EBA-44DA-A20F-3B3395DC646F}.Release|x86.ActiveCfg = Release|Win32
 		{15A15B3F-4EBA-44DA-A20F-3B3395DC646F}.Release|x86.Build.0 = Release|Win32
+		{FBA55E8B-25A3-452C-947D-70B42F22018C}.Debug|x64.ActiveCfg = Debug|x64
+		{FBA55E8B-25A3-452C-947D-70B42F22018C}.Debug|x64.Build.0 = Debug|x64
+		{FBA55E8B-25A3-452C-947D-70B42F22018C}.Debug|x86.ActiveCfg = Debug|Win32
+		{FBA55E8B-25A3-452C-947D-70B42F22018C}.Debug|x86.Build.0 = Debug|Win32
+		{FBA55E8B-25A3-452C-947D-70B42F22018C}.Release|x64.ActiveCfg = Release|x64
+		{FBA55E8B-25A3-452C-947D-70B42F22018C}.Release|x64.Build.0 = Release|x64
+		{FBA55E8B-25A3-452C-947D-70B42F22018C}.Release|x86.ActiveCfg = Release|Win32
+		{FBA55E8B-25A3-452C-947D-70B42F22018C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
