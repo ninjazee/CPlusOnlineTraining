@@ -8,6 +8,8 @@ LANG: C++11
 #include <fstream>
 #include <vector>
 #include <string>
+#include <functional>
+#include <tuple>
 
 using namespace std;
 
@@ -25,11 +27,18 @@ bool areSame(const vector<string> &before, const vector<string> &after) {
 }
 
 void rotate90(const vector<string> &before, vector<string> &output) {
-
+	int size = (int)before.size();
+	for (int i = 0; i < size; ++i) {
+		for (int j = 0; j < size; ++j) {
+			string beforeString = before[i];
+			char beforeChar = beforeString[j];
+			output[j][size - 1 - i] = beforeChar;
+		}
+	}
 }
 
 void reverseString(const string &input, string &s) {
-	int size = input.size();
+	int size = (int)input.size();
 	for (int i = 0; i < size; ++i) {
 		s[size - i - 1] = input[i];
 	}
@@ -46,10 +55,10 @@ void reflectStrings(const vector<string> &before, vector<string> &output) {
 
 int detectChange(const vector<string> &before, const vector<string> &after) {
 	int n = (int)before.size();
-	vector<string> output1(n); 
-	vector<string> output2(n);
-	vector<string> output3(n);
-	vector<string> output4(n);
+	vector<string> output1(n, string(n,' ')); 
+	vector<string> output2(n, string(n, ' '));
+	vector<string> output3(n, string(n, ' '));
+	vector<string> output4(n, string(n, ' '));
 	int retVal = 7;
 	
 	// check if both vectors are the same (no change, #6)
@@ -61,6 +70,12 @@ int detectChange(const vector<string> &before, const vector<string> &after) {
 	reflectStrings(before, output4);
 	if (areSame(output4, after)) {
 		retVal = 4;
+	}
+
+	// check if a 90 degree rotation occurred
+	rotate90(before, output1);
+	if (areSame(output1, after)) {
+		retVal = 1;
 	}
 
 	return retVal;
