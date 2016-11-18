@@ -1,6 +1,6 @@
 /*
 ID: kml111
-PROG: ride
+PROG: transform
 LANG: C++11
 */
 
@@ -59,26 +59,55 @@ int detectChange(const vector<string> &before, const vector<string> &after) {
 	vector<string> output2(n, string(n, ' '));
 	vector<string> output3(n, string(n, ' '));
 	vector<string> output4(n, string(n, ' '));
-	int retVal = 7;
+	vector<string> output5(n, string(n, ' '));
+	vector<string> output6(n, string(n, ' '));
+	vector<string> output7(n, string(n, ' '));
 	
-	// check if both vectors are the same (no change, #6)
-	if (areSame(before, after)) {
-		retVal = 6;
+	// check if a 90 degree rotation occurred
+	rotate90(before, output1);
+	if (areSame(output1, after)) {
+		return 1;
+	}
+	
+	// check if a 180 degree rotation occurred
+	rotate90(output1, output2);
+	if (areSame(output2, after)) {
+		return 2;
+	}
+
+	//check if a 270 degree rotation occurred
+	rotate90(output2, output3);
+	if (areSame(output3, after)) {
+		return 3;
 	}
 
 	// check if a reflection occured 
 	reflectStrings(before, output4);
 	if (areSame(output4, after)) {
-		retVal = 4;
+		return 4;
+	}
+	
+	//check if a combination occured
+	rotate90(output4, output5);
+	if (areSame(output5, after)) {
+		return 5;
+	}
+	rotate90(output5, output6);
+	if (areSame(output6, after)) {
+		return 5;
+	}
+	rotate90(output6, output7);
+	if (areSame(output7, after)) {
+		return 5;
 	}
 
-	// check if a 90 degree rotation occurred
-	rotate90(before, output1);
-	if (areSame(output1, after)) {
-		retVal = 1;
+	// check if both vectors are the same (no change, #6)
+	if (areSame(before, after)) {
+		return 6;
 	}
 
-	return retVal;
+
+	return 7;
 }
 
 int main() {
@@ -98,6 +127,6 @@ int main() {
 		fin >> line;
 		after[b] = line;
 	}
-	cout << detectChange(before, after) << endl;
+	fout << detectChange(before, after) << endl;
 	return 0;
 }

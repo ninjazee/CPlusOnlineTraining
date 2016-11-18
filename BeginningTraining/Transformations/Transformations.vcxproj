@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="transform.in" />
+    <None Include="transform.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

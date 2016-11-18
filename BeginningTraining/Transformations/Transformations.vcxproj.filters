@@ -23,5 +23,8 @@
     <None Include="transform.in">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="transform.out">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
