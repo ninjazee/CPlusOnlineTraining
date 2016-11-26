@@ -20,6 +20,26 @@ int numTiles(const vector<string> &figure) {
 	return count;
 }
 
+void boundingBox(const vector<string> &figure, int &farthestRight, int &farthestLeft, int &farthestUp, int &farthestDown) {
+	int n = (int)figure.size();
+	farthestRight = 0;
+	farthestLeft = 0;
+	farthestUp = 0;
+	farthestDown = 0;
+	for (int a = 0; a < n; ++a) {
+		for (int b = 0; b < n; ++b) {
+			if (figure[a][b] == '#') {
+				if (a > farthestDown) {
+					farthestDown = a;
+				}
+				if (b > farthestRight) {
+					farthestRight = b;
+				}
+			}
+		}
+	}
+}
+
 int main() {
 	ofstream fout("bcs.out");
 	ifstream fin("bcs.in");
