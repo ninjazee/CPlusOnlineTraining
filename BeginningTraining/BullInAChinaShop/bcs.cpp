@@ -20,11 +20,29 @@ int numTiles(const vector<string> &figure) {
 	return count;
 }
 
+void numSame(const vector<string> &originalFig, const vector<vector<string>> &pieces, tuple<int, int> &samesize) {
+	int originalSize = numTiles(originalFig);
+	vector<int> pieceSizes(k);
+	for (int z = 0; z < k; ++z) {
+		int size = numTiles(pieces[z]);
+		pieceSizes[z] = size;
+	}
+
+	for (int y = 0; y < k - 1; ++y) {
+		for (int x = y + 1; x < k; ++x) {
+			if (pieceSizes[x] + pieceSizes[y] == originalSize) {
+				fout << y + 1 << ' ' << x + 1 << endl;
+				return 0;
+			}
+		}
+	}
+}
+
 void boundingBox(const vector<string> &figure, int &farthestRight, int &farthestLeft, int &farthestUp, int &farthestDown) {
 	int n = (int)figure.size();
 	farthestRight = 0;
-	farthestLeft = 0;
-	farthestUp = 0;
+	farthestLeft = n-1;
+	farthestUp = n-1;
 	farthestDown = 0;
 	for (int a = 0; a < n; ++a) {
 		for (int b = 0; b < n; ++b) {
@@ -34,6 +52,12 @@ void boundingBox(const vector<string> &figure, int &farthestRight, int &farthest
 				}
 				if (b > farthestRight) {
 					farthestRight = b;
+				}
+				if (a < farthestUp) {
+					farthestUp = a;
+				}
+				if (b < farthestLeft) {
+					farthestLeft = b;
 				}
 			}
 		}
