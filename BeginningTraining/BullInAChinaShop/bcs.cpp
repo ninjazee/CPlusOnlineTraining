@@ -20,6 +20,7 @@ int numTiles(const vector<string> &figure) {
 	return count;
 }
 
+/*
 void numSame(const vector<string> &originalFig, const vector<vector<string>> &pieces, tuple<int, int> &samesize) {
 	int originalSize = numTiles(originalFig);
 	vector<int> pieceSizes(k);
@@ -38,6 +39,7 @@ void numSame(const vector<string> &originalFig, const vector<vector<string>> &pi
 	}
 }
 
+*/
 void boundingBox(const vector<string> &figure, int &farthestRight, int &farthestLeft, int &farthestUp, int &farthestDown) {
 	int n = (int)figure.size();
 	farthestRight = 0;
@@ -64,6 +66,10 @@ void boundingBox(const vector<string> &figure, int &farthestRight, int &farthest
 	}
 }
 
+bool bMatch()
+{
+}
+
 int main() {
 	ofstream fout("bcs.out");
 	ifstream fin("bcs.in");
@@ -85,6 +91,8 @@ int main() {
 		}
 		pieces[j] = piece;
 	}
+
+	//checks if two pieces have same number of tiles as original piece
 	int originalSize = numTiles(originalFig);
 	vector<int> pieceSizes(k);
 	for (int z = 0; z < k; ++z) {
@@ -92,14 +100,37 @@ int main() {
 		pieceSizes[z] = size;
 	}
 
-	for (int y = 0; y < k-1; ++y) {
+
+	vector<tuple<int, int>> sameNumPieces;
+	for (int y = 0; y < k - 1; ++y) {
 		for (int x = y+1; x < k; ++x) {
 			if (pieceSizes[x] + pieceSizes[y] == originalSize) {
-				fout << y+1 << ' ' << x+1 << endl;
-				return 0;
+				int farthestLeft;
+				int farthestRight;
+				int farthestUp;
+				int farthestDown;
+				boundingBox(pieces[y], farthestRight, farthestLeft, farthestUp, farthestDown);
+				int width = farthestRight - farthestLeft + 1; 
+				int height = farthestDown - farthestUp + 1; 
+				int shiftx = n - width;
+				int shifty = n - height; 
+				for (int x = 0; x <= shiftx; x++)
+				{
+					for (int y = 0; y <= shifty; y++)
+					{
+						
+					}
+				}
 			}
 		}
 	}
 
-	
+	/*
+	for (int p = 0; p < k; ++p) {
+		
+		cout << "right: " << farthestRight << " left: " << farthestLeft << " up: " << farthestUp << " down: " << farthestDown << endl;
+	}*/
+
+
+	return 0;
 }
