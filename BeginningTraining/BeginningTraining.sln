@@ -49,6 +49,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FieldReduction", "FieldRedu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MooSick", "MooSick\MooSick.vcxproj", "{0BD6FAA8-B140-4D03-949E-81DFF0D742E2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Awkward Digits", "Awkward Digits\Awkward Digits.vcxproj", "{1170E822-A7AB-4F53-A998-4549E1603C05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -241,6 +243,14 @@ Global
 		{0BD6FAA8-B140-4D03-949E-81DFF0D742E2}.Release|x64.Build.0 = Release|x64
 		{0BD6FAA8-B140-4D03-949E-81DFF0D742E2}.Release|x86.ActiveCfg = Release|Win32
 		{0BD6FAA8-B140-4D03-949E-81DFF0D742E2}.Release|x86.Build.0 = Release|Win32
+		{1170E822-A7AB-4F53-A998-4549E1603C05}.Debug|x64.ActiveCfg = Debug|x64
+		{1170E822-A7AB-4F53-A998-4549E1603C05}.Debug|x64.Build.0 = Debug|x64
+		{1170E822-A7AB-4F53-A998-4549E1603C05}.Debug|x86.ActiveCfg = Debug|Win32
+		{1170E822-A7AB-4F53-A998-4549E1603C05}.Debug|x86.Build.0 = Debug|Win32
+		{1170E822-A7AB-4F53-A998-4549E1603C05}.Release|x64.ActiveCfg = Release|x64
+		{1170E822-A7AB-4F53-A998-4549E1603C05}.Release|x64.Build.0 = Release|x64
+		{1170E822-A7AB-4F53-A998-4549E1603C05}.Release|x86.ActiveCfg = Release|Win32
+		{1170E822-A7AB-4F53-A998-4549E1603C05}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
