@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="palsquare.in" />
+    <None Include="palsquare.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
