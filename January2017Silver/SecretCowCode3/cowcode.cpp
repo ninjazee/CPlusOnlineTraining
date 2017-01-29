@@ -7,27 +7,24 @@ using namespace std;
 
 char cowcode(vector<char> &s, const long long n) {
 	long long lstring = (long long)s.size();
-	int recursions = 1;
 	while (lstring < n) {
 		lstring *= 2;
-		recursions += 1;
 	}
 
-	for (int i = 0; i < recursions; ++i) {
-		long long size = (long long)s.size();
-		for (int a = 0; a < size; ++a) {
-			char c;
-			if (a == 0) {
-				c = s[size - 1];
-			}
-			else {
-				c = s[a - 1];
-			}
-			s.push_back(c);
+	long long p = n;
+	long long l = lstring;
+	while (l > (long long)s.size()) {
+		l = lstring / 2;
+		if (p < l) {
+
 		}
+		else {
+			p = (p - 1) % l;
+		}
+		lstring = l;
 	}
 
-	return s[n - 1];
+	return s[p];
 }
 
 int main() {
@@ -38,10 +35,10 @@ int main() {
 	long long n;
 	fin >> n;
 
-	vector<char> s ((int)is.size());
+	vector<char> s((int)is.size());
 	for (int x = 0; x < (int)is.size(); ++x) {
 		s[x] = is[x];
 	}
-	fout << cowcode(s, n) << endl;
+	fout << cowcode(s, (n - 1)) << endl;
 	return 0;
 }
