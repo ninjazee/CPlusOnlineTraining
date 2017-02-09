@@ -8,11 +8,55 @@ LANG: C++11
 #include <string>
 #include <vector>
 #include <tuple>
+#include <algorithm>
 
 using namespace std;
 
-bool isLoop(const int y1, const int y2) {
-	return (y1 == y2);
+bool compareTuple(const tuple<int, int> &t1, const tuple<int, int> &t2) {
+	if (get<1>(t1) < get<1>(t2)) {
+		return true;
+	}
+	else if (get<1>(t1) == get<1>(t2)) {
+		return (get<0>(t1) < get<0>(t2));
+	}
+	else {
+		return false;
+	}
+}
+
+bool isEnd(const vector<tuple<int, int>> &wormholes, int x) {
+	if (x < ((int)wormholes.size() - 1)) {
+		if (get<1>(wormholes[x]) < get<1>(wormholes[x + 1])) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	else {
+		return true;
+	}
+}
+
+bool isLoop(const vector<tuple<int, int>> &wormholes, const vector<int> &mask) {
+	int n = (int)wormholes.size();
+
+
+	for (int i = 0; i < n; ++i) {
+		int curr = i;
+		int loops = 0;
+		curr = mask[curr];
+		loops += 1;
+		while (isEnd(wormholes, curr) == false) {
+			curr += 1;
+			curr = mask[curr];
+			loops += 1;
+			if (loops > n) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 void printMask(vector<int> &mask, const int level) {
@@ -45,7 +89,7 @@ void pickone(vector<int> &mask, const int level) {
 	}
 }
 
-int picktwo(vector<int> &mask, const int level, int &count) {
+int picktwo(const vector<tuple<int, int>> &wormholes, vector<int> &mask, const int level, int &count) {
 	//printMask(mask, level);
 	int n = (int)mask.size();
 	if (level < n/2) {
@@ -65,7 +109,7 @@ int picktwo(vector<int> &mask, const int level, int &count) {
 				mask[j] = mask[i];
 				mask[i] = x;
 				*/
-				picktwo(mask, level + 1, count);
+				picktwo(wormholes, mask, level + 1, count);
 				//printMask(mask, level);
 				mask[j] = -1;
 			}
@@ -73,6 +117,7 @@ int picktwo(vector<int> &mask, const int level, int &count) {
 		mask[i] = -1;
 	}
 	else {
+		/*
 		for (int j = 0; j < n; ++j) {
 			if (j < mask[j]) {
 				cout << j << '-' << mask[j] << ' ';
@@ -80,7 +125,12 @@ int picktwo(vector<int> &mask, const int level, int &count) {
 			// cout << mask[j] << ' ';
 		}
 		cout << endl;
-		count += 1;
+		*/
+		
+		if (isLoop(wormholes, mask)) {
+			count += 1;
+		}
+		
 
 	}
 	return count;
@@ -99,11 +149,12 @@ int main() {
 		wormholes[y] = make_tuple(wormholex, wormholey);
 	}
 
-	int z = 6; 
-	vector<int> mask(z, -1);
+	vector<int> mask(n, -1);
 	int count = 0;
 
-	cout << picktwo(mask, 0, count) << endl; 
+	sort(wormholes.begin(), wormholes.end(), compareTuple);
+
+	fout << picktwo(wormholes, mask, 0, count) << endl; 
 	
 	return 0;
 }
