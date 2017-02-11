@@ -154,7 +154,7 @@ int main() {
 
 	sort(wormholes.begin(), wormholes.end(), compareTuple);
 
-	fout << picktwo(wormholes, mask, 0, count) << endl; 
+	cout << picktwo(wormholes, mask, 0, count) << endl; 
 	
 	return 0;
 }
