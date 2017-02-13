@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B6FC8331-C3F9-4048-A182-731C2F9E660E}</ProjectGuid>
-    <RootNamespace>WhyDidTheCowCrossTheRoad</RootNamespace>
+    <ProjectGuid>{2A1187D9-EAD2-4E69-A2B9-4664BF77825A}</ProjectGuid>
+    <RootNamespace>MothersMilk</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -118,10 +118,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="helpcross.cpp" />
+    <ClCompile Include="milk3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="helpcross.in" />
+    <None Include="milk3.in" />
+    <None Include="milk3.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,12 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="maxcross.cpp">
+    <ClCompile Include="milk3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="maxcross.in">
+    <None Include="milk3.in">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="milk3.out">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
