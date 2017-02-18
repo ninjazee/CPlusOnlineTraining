@@ -56,8 +56,9 @@ int helpCross2(vector<int> &chickens, vector<tuple<int, int>> &cows/*, vector<bo
 	sort(cows2.begin(), cows2.end(), TupleCompare<1>());
 
 	int c = (int)chickens.size();
-	int n = (int)cows.size();
+	int n = (int)cows2.size();
 
+	
 	int j = 0;
 	int pairs = 0;
 	for (int i = 0; i < c; ++i) {
@@ -78,6 +79,7 @@ int helpCross2(vector<int> &chickens, vector<tuple<int, int>> &cows/*, vector<bo
 			}
 		}
 	}
+	
 
 	int k = 0;
 	int pairs2 = 0;
@@ -99,13 +101,53 @@ int helpCross2(vector<int> &chickens, vector<tuple<int, int>> &cows/*, vector<bo
 			}
 		}
 	}
-
+	
 	if (pairs2 > pairs) {
 		return pairs2;
 	}
 	else {
 		return pairs;
 	}
+}
+
+int helpCross3(vector<int> &chickens, vector<tuple<int, int>> &cows) {
+	sort(chickens.begin(), chickens.end());
+	sort(cows.begin(), cows.end(), TupleCompare<1>());
+
+	int c = (int)chickens.size();
+	int n = (int)cows.size();
+
+	vector<bool> npaired(n, false);
+
+	int j = 0;
+	int k = 0;
+	int pairs = 0;
+	for (int i = 0; i < c; ++i) {
+		j = k;
+		if (j > n - 1) {
+			break;
+		}
+		else {
+			while (j <= n - 1) {
+				if (get<0>(cows[j]) <= chickens[i]) {
+					if (npaired[j] == false) {
+						if (get<1>(cows[j]) >= chickens[i]) {
+							pairs += 1;
+							npaired[j] = true;
+							if (j == k) {
+								k += 1;
+							}
+							//j += 1;
+							break;
+						}
+					}
+				}
+				j += 1;
+			}
+		}
+	}
+
+	return pairs;
 }
 
 int main() {
@@ -126,8 +168,6 @@ int main() {
 		cows[y] = make_tuple(a, b);
 	}
 
-	//vector<bool> npaired(n, false);
-
-	fout << helpCross(chickens, cows/*, npaired*/) << endl;
+	fout << helpCross3(chickens, cows) << endl;
 	return 0;
 }
