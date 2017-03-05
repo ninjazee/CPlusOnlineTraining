@@ -29,8 +29,7 @@ void calculateDist(const vector<tuple<int, int, int>> &cows, vector<vector<int>>
 int followGraph(const vector<vector<int>> &edge, vector<bool> &reached, const int current) {
 	if (reached[current])
 		return 0; 
-	else
-	{
+	else {
 		reached[current] = true;
 		int count = 1; 
 		for (int i : edge[current]) { // for each value that the current node connects to
