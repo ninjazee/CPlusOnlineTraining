@@ -46,8 +46,32 @@ void printGrid(const vector<vector<bool>> &horizontal, const vector<vector<bool>
 	}
 }
 
-void pickone(const tuple<int, int> &cow, const vector<vector<bool>> &horizontal, const vector<vector<bool>> &vertical) {
-	
+int followGraph(const vector<vector<bool>> &cows, const vector<vector<bool>> &horizontal, const vector<vector<bool>> &vertical, vector<vector<bool>> &reached, const int currentr, const int currentc) {
+	if (reached[currentr][currentc]) // if already reached this square it will not lead you anywhere
+		return 0;
+	else {
+		reached[currentr][currentc] = true;
+		int count = 0;
+
+		if (cows[currentr][currentc]) { // if there is a cow here increase the number of cows visited
+			count += 1;
+		}
+
+		if (vertical[currentr][currentc + 1] == false) { // going right: c + 1
+			count += followGraph(cows, horizontal, vertical, reached, currentr, currentc + 1);
+		}
+		if (vertical[currentr][currentc] == false) { // going left: c - 1
+			count += followGraph(cows, horizontal, vertical, reached, currentr, currentc - 1);
+		}
+		if (horizontal[currentr + 1][currentc] == false) { // going up: r + 1
+			count += followGraph(cows, horizontal, vertical, reached, currentr + 1, currentc);
+		}
+		if (horizontal[currentr][currentc] == false) { // going down: r - 1
+			count += followGraph(cows, horizontal, vertical, reached, currentr - 1, currentc);
+		}
+		
+		return count;
+	}
 }
 
 int main() {
@@ -78,19 +102,13 @@ int main() {
 	}
 
 	vector<vector<bool>> cows(n, vector<bool>(n, false));
+	vector<tuple<int, int>> cowsLocations(k);
 	for (int b = 0; b < k; ++b) {
 		int r, c;
 		fin >> r >> c;
 		cows[r - 1][c - 1] = true;
+		cowsLocations[b] = make_tuple(r - 1, c - 1);
 	}
-	/*
-	vector <tuple<int, int>> cows(k);
-	for (int b = 0; b < k; ++b) {
-		int r, c;
-		fin >> r >> c;
-		cows[b] = make_tuple(r, c);
-	}
-	*/
 
 	/*
 	cout << "Cows:" << endl;
@@ -111,6 +129,20 @@ int main() {
 	}
 	*/
 
-	printGrid(horizontal, vertical, cows);
+	//printGrid(horizontal, vertical, cows);
+
+	int cowsReached = 0;
+	for (int c = 0; c < k; ++c) {
+		vector<vector<bool>> reached(n, vector<bool>(n, false));
+		cowsReached += followGraph(cows, horizontal, vertical, reached, get<0>(cowsLocations[c]), get<1>(cowsLocations[c]));
+		cowsReached -= 1;
+	}
+
+	int numPairs = 0;
+	for (int d = 0; d < k - 1; ++d) {
+		numPairs += k - 1 - d;
+	}
+
+	fout << (numPairs - (cowsReached / 2)) << endl;
 	return 0;
 }
