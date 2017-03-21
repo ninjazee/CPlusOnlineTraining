@@ -10,7 +10,7 @@ LANG: C++11
 
 using namespace std;
 
-void printGrid(const vector<vector<bool>> &horizontal, const vector<vector<bool>> &vertical) {
+void printGrid(const vector<vector<bool>> &horizontal, const vector<vector<bool>> &vertical, const vector<vector<int>> &reached) {
 	int n = (int)vertical.size();
 	int m = (int)horizontal[0].size();
 	for (int y = 0; y <= (n * 2); ++y) { // for each row
@@ -37,8 +37,13 @@ void printGrid(const vector<vector<bool>> &horizontal, const vector<vector<bool>
 						cout << ' ';
 					}
 				}
-				else {
-					cout << ' ';
+				else { // this is a content row
+					if (reached[y / 2][z / 2] == -1) {
+						cout << '.';
+					}
+					else {
+						cout << reached[y / 2][z / 2];
+					}
 				}
 			}
 		}
@@ -46,24 +51,24 @@ void printGrid(const vector<vector<bool>> &horizontal, const vector<vector<bool>
 	}
 }
 
-int followGraph(const vector<vector<bool>> &horizontal, const vector<vector<bool>> &vertical, vector<vector<bool>> &reached, const int currentr, const int currentc) {
-	if (reached[currentr][currentc]) // if already reached this square it will not lead you anywhere
+int followGraph(const vector<vector<bool>> &horizontal, const vector<vector<bool>> &vertical, vector<vector<int>> &reached, const int currentr, const int currentc, const int room) {
+	if (reached[currentr][currentc] != -1) // if already reached this square it will not lead you anywhere
 		return 0;
 	else {
-		reached[currentr][currentc] = true;
+		reached[currentr][currentc] = room;
 		int count = 1;
 
 		if (vertical[currentr][currentc + 1] == false) { // there is not a wall to the right; going right: c + 1
-			count += followGraph(horizontal, vertical, reached, currentr, currentc + 1);
+			count += followGraph(horizontal, vertical, reached, currentr, currentc + 1, room);
 		}
 		if (vertical[currentr][currentc] == false) { // There is not a wall to the left; going left: c - 1
-			count += followGraph(horizontal, vertical, reached, currentr, currentc - 1);
+			count += followGraph(horizontal, vertical, reached, currentr, currentc - 1, room);
 		}
 		if (horizontal[currentr + 1][currentc] == false) { // there is not a wall above; going up: r + 1
-			count += followGraph(horizontal, vertical, reached, currentr + 1, currentc);
+			count += followGraph(horizontal, vertical, reached, currentr + 1, currentc, room);
 		}
 		if (horizontal[currentr][currentc] == false) { // there is not a wall underneath; going down: r - 1
-			count += followGraph(horizontal, vertical, reached, currentr - 1, currentc);
+			count += followGraph(horizontal, vertical, reached, currentr - 1, currentc, room);
 		}
 
 		return count;
@@ -102,23 +107,26 @@ int main() {
 		}
 	}
 
-	printGrid(horizontal, vertical);
-
-	vector<vector<bool>> reached(n, vector<bool>(m, false));
+	vector<vector<int>> reached(n, vector<int>(m, -1));
 
 	// figure out how big the rooms are and how many rooms there are
 	vector<int> rooms;
+	int room = 0;
 	for (int x = 0; x < n; ++x) { // for each row
 		for (int y = 0; y < m; ++y) { // for each square
-			int roomSize = followGraph(horizontal, vertical, reached, x, y);
+			int roomSize = followGraph(horizontal, vertical, reached, x, y, room);
 			if (roomSize != 0) { // there is a room
 				rooms.push_back(roomSize);
+				room += 1;
 			}
 		}
 	}
 
+// Remove Wall here. Loop through walls from west to east and then south to north. Look at horizontal walls before vertical walls. 
+
 	sort(rooms.begin(), rooms.end());
 
+	printGrid(horizontal, vertical, reached);
 	cout << (int)rooms.size() << endl << rooms[(int)rooms.size() - 1] << endl;
 
 	return 0;
