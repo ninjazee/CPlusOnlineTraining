@@ -122,12 +122,42 @@ int main() {
 		}
 	}
 
-// Remove Wall here. Loop through walls from west to east and then south to north. Look at horizontal walls before vertical walls. 
+	int most = 0;
+	int bestWallr = -1;
+	int bestWallc = -1;
+	char roomDirection = 'E';
+	// loop through all the walls
+	for (int c = 0; c < m; ++c) { // go from west to east
+		for (int r = n - 1; r >= 0; --r) { // go from south to north
+			if (r != 0) { // check horizontal wall
+				if (reached[r][c] != reached[r - 1][c]) {
+					int newRoomSize = rooms[reached[r][c]] + rooms[reached[r - 1][c]];
+					if (newRoomSize > most) {
+						bestWallr = r + 1;
+						bestWallc = c + 1;
+						most = newRoomSize;
+						roomDirection = 'N';
+					}
+				}
+			}
+			if (c != m - 1) { // check vertical wall
+				if (reached[r][c] != reached[r][c + 1]) {
+					int newRoomSize = rooms[reached[r][c]] + rooms[reached[r][c + 1]];
+					if (newRoomSize > most) {
+						bestWallr = r + 1;
+						bestWallc = c + 1;
+						most = newRoomSize;
+						roomDirection = 'E';
+					}
+				}
+			}
+		}
+	}
 
 	sort(rooms.begin(), rooms.end());
 
-	printGrid(horizontal, vertical, reached);
-	cout << (int)rooms.size() << endl << rooms[(int)rooms.size() - 1] << endl;
+	//printGrid(horizontal, vertical, reached);
+	fout << (int)rooms.size() << endl << rooms[(int)rooms.size() - 1] << endl << most << endl << bestWallr << ' ' << bestWallc << ' ' << roomDirection << endl;
 
 	return 0;
 }
