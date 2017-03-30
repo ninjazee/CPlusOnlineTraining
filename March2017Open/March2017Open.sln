@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HealthyHolsteins", "Healthy
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HammingCodes", "HammingCodes\HammingCodes.vcxproj", "{C4CE8EA1-186D-449B-A162-618E257D5938}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PrefaceNumbering", "PrefaceNumbering\PrefaceNumbering.vcxproj", "{215A5BB1-1DEB-4405-AB24-F51087CCC2CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -121,6 +123,14 @@ Global
 		{C4CE8EA1-186D-449B-A162-618E257D5938}.Release|x64.Build.0 = Release|x64
 		{C4CE8EA1-186D-449B-A162-618E257D5938}.Release|x86.ActiveCfg = Release|Win32
 		{C4CE8EA1-186D-449B-A162-618E257D5938}.Release|x86.Build.0 = Release|Win32
+		{215A5BB1-1DEB-4405-AB24-F51087CCC2CB}.Debug|x64.ActiveCfg = Debug|x64
+		{215A5BB1-1DEB-4405-AB24-F51087CCC2CB}.Debug|x64.Build.0 = Debug|x64
+		{215A5BB1-1DEB-4405-AB24-F51087CCC2CB}.Debug|x86.ActiveCfg = Debug|Win32
+		{215A5BB1-1DEB-4405-AB24-F51087CCC2CB}.Debug|x86.Build.0 = Debug|Win32
+		{215A5BB1-1DEB-4405-AB24-F51087CCC2CB}.Release|x64.ActiveCfg = Release|x64
+		{215A5BB1-1DEB-4405-AB24-F51087CCC2CB}.Release|x64.Build.0 = Release|x64
+		{215A5BB1-1DEB-4405-AB24-F51087CCC2CB}.Release|x86.ActiveCfg = Release|Win32
+		{215A5BB1-1DEB-4405-AB24-F51087CCC2CB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
