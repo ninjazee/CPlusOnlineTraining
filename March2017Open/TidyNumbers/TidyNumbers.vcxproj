@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{846F1BF7-3A68-415A-9EB6-001878E9F223}</ProjectGuid>
-    <RootNamespace>PartyLamps</RootNamespace>
+    <ProjectGuid>{4BAE1177-5827-4BE3-9DDA-5A107432B1F3}</ProjectGuid>
+    <RootNamespace>TidyNumbers</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -118,11 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="lamps.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="lamps.in" />
-    <None Include="lamps.out" />
+    <ClCompile Include="tidynums.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
