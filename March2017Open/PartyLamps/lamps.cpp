@@ -42,14 +42,14 @@ int main() {
 	int x;
 	fin >> x;
 	while (x != -1) {
-		onNums.push_back(x);
+		onNums.push_back(x - 1);
 		fin >> x;
 	}
 	vector<int> offNums;
 	int y;
 	fin >> y;
 	while (y != -1) {
-		offNums.push_back(y);
+		offNums.push_back(y - 1);
 		fin >> y;
 	}
 
@@ -69,55 +69,55 @@ int main() {
 	for (int j = 0; j < (int)states.size(); ++j) {
 		if (states[j] > 0) { // some lamps are in this state
 			for (int a = 0; a < (int)onNums.size(); ++a) { // check if it fits the onNums criteria
-				if ((onNums[a] % 6) == 0) {
+				switch (onNums[a] % 6) {
+				case 0:
 					if ((j & 8) == 0) {
 						states[j] = -1;
-						break;
 					}
-				}
-				else if ((onNums[a] % 6) == 1 || (onNums[a] % 6) == 5) {
+					break;
+				case 1:
+				case 5:
 					if ((j & 4) == 0) {
 						states[j] = -1;
-						break;
 					}
-				}
-				else if ((onNums[a] % 6) == 2 || (onNums[a] % 6) == 4) {
+					break;
+				case 2:
+				case 4:
 					if ((j & 2) == 0) {
 						states[j] = -1;
-						break;
 					}
-				}
-				else if ((onNums[a] % 6) == 3) {
+					break;
+				case 3:
 					if ((j & 1) == 0) {
 						states[j] = -1;
-						break;
 					}
+					break;
 				}
 			}
 			for (int b = 0; b < (int)offNums.size(); ++b) { // check if it fits the offNums criteria
-				if ((offNums[b] % 6) == 0) {
+				switch (offNums[b] % 6) {
+				case 0: 
 					if ((j & 8) != 0) {
 						states[j] = -1;
-						break;
 					}
-				}
-				else if ((offNums[b] % 6) == 1 || (offNums[b] % 6) == 5) {
+					break;
+				case 1:
+				case 5:
 					if ((j & 4) != 0) {
 						states[j] = -1;
-						break;
 					}
-				}
-				else if ((offNums[b] % 6) == 2 || (offNums[b] % 6) == 4) {
+					break;
+				case 2: 
+				case 4:
 					if ((j & 2) != 0) {
 						states[j] = -1;
-						break;
 					}
-				}
-				else if ((offNums[b] % 6) == 3) {
+					break;
+				case 3:
 					if ((j & 1) != 0) {
 						states[j] = -1;
-						break;
 					}
+					break;
 				}
 			}
 		}
@@ -128,39 +128,29 @@ int main() {
 		if (states[k] > 0) {
 			impossible = false;
 			for (int pointer = 0; pointer < n; ++pointer) {
-				if (pointer % 6 == 0) { // 1 spot
-					if ((k & 8) != 0) {
-						fout << 1;
-					}
-					else {
-						fout << 0;
-					}
+				int place;
+				switch (pointer % 6) {
+				case 0:
+					place = 8;
+					break;
+				case 1:
+				case 5:
+					place = 4;
+					break;
+				case 2:
+				case 4:
+					place = 2;
+					break;
+				case 3:
+					place = 1;
+					break;
 				}
-				else if (pointer % 6 == 1 || pointer % 6 == 5) { // 2 spot
-					if ((k & 4) != 0) {
-						fout << 1;
-					}
-					else {
-						fout << 0;
-					}
+				if ((k & place) != 0) {
+					fout << 1;
 				}
-				else if (pointer % 6 == 2 || pointer % 6 == 4) { // 3 spot
-					if ((k & 2) != 0) {
-						fout << 1;
-					}
-					else {
-						fout << 0;
-					}
+				else {
+					fout << 0;
 				}
-				else if (pointer % 6 == 3) { // 4 spot
-					if ((k & 1) != 0) {
-						fout << 1;
-					}
-					else {
-						fout << 0;
-					}
-				}
-				pointer += 1;
 			}
 			fout << endl;
 		}
