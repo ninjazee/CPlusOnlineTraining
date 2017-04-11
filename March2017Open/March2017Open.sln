@@ -37,6 +37,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OversizedPancakeFlipper", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TidyNumbers", "TidyNumbers\TidyNumbers.vcxproj", "{4BAE1177-5827-4BE3-9DDA-5A107432B1F3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LongestPrefix", "LongestPrefix\LongestPrefix.vcxproj", "{48F94B7B-3F89-4987-8AA8-4C500287217D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -181,6 +183,14 @@ Global
 		{4BAE1177-5827-4BE3-9DDA-5A107432B1F3}.Release|x64.Build.0 = Release|x64
 		{4BAE1177-5827-4BE3-9DDA-5A107432B1F3}.Release|x86.ActiveCfg = Release|Win32
 		{4BAE1177-5827-4BE3-9DDA-5A107432B1F3}.Release|x86.Build.0 = Release|Win32
+		{48F94B7B-3F89-4987-8AA8-4C500287217D}.Debug|x64.ActiveCfg = Debug|x64
+		{48F94B7B-3F89-4987-8AA8-4C500287217D}.Debug|x64.Build.0 = Debug|x64
+		{48F94B7B-3F89-4987-8AA8-4C500287217D}.Debug|x86.ActiveCfg = Debug|Win32
+		{48F94B7B-3F89-4987-8AA8-4C500287217D}.Debug|x86.Build.0 = Debug|Win32
+		{48F94B7B-3F89-4987-8AA8-4C500287217D}.Release|x64.ActiveCfg = Release|x64
+		{48F94B7B-3F89-4987-8AA8-4C500287217D}.Release|x64.Build.0 = Release|x64
+		{48F94B7B-3F89-4987-8AA8-4C500287217D}.Release|x86.ActiveCfg = Release|Win32
+		{48F94B7B-3F89-4987-8AA8-4C500287217D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
