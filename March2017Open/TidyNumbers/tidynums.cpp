@@ -14,7 +14,8 @@ int count_digits(long long num) {
 	return count;
 }
 
-int power(const int base, const int power) {
+int 
+(const int base, const int power) {
 	int b = base;
 	for (int i = 0; i < power - 1; ++i) {
 		b *= base;
