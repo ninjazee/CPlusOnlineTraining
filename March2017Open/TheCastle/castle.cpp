@@ -156,7 +156,7 @@ int main() {
 
 	sort(rooms.begin(), rooms.end());
 
-	//printGrid(horizontal, vertical, reached);
+	printGrid(horizontal, vertical, reached);
 	fout << (int)rooms.size() << endl << rooms[(int)rooms.size() - 1] << endl << most << endl << bestWallr << ' ' << bestWallc << ' ' << roomDirection << endl;
 
 	return 0;
