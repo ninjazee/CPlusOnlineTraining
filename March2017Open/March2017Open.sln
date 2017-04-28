@@ -51,6 +51,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TamworthTwo", "TamworthTwo\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Overfencing", "Overfencing\Overfencing.vcxproj", "{1CEEB692-825E-4224-8A03-44F153F16AD5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CowTours", "CowTours\CowTours.vcxproj", "{92340A46-E2BD-42D9-9EE9-D598A8B74C9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -251,6 +253,14 @@ Global
 		{1CEEB692-825E-4224-8A03-44F153F16AD5}.Release|x64.Build.0 = Release|x64
 		{1CEEB692-825E-4224-8A03-44F153F16AD5}.Release|x86.ActiveCfg = Release|Win32
 		{1CEEB692-825E-4224-8A03-44F153F16AD5}.Release|x86.Build.0 = Release|Win32
+		{92340A46-E2BD-42D9-9EE9-D598A8B74C9D}.Debug|x64.ActiveCfg = Debug|x64
+		{92340A46-E2BD-42D9-9EE9-D598A8B74C9D}.Debug|x64.Build.0 = Debug|x64
+		{92340A46-E2BD-42D9-9EE9-D598A8B74C9D}.Debug|x86.ActiveCfg = Debug|Win32
+		{92340A46-E2BD-42D9-9EE9-D598A8B74C9D}.Debug|x86.Build.0 = Debug|Win32
+		{92340A46-E2BD-42D9-9EE9-D598A8B74C9D}.Release|x64.ActiveCfg = Release|x64
+		{92340A46-E2BD-42D9-9EE9-D598A8B74C9D}.Release|x64.Build.0 = Release|x64
+		{92340A46-E2BD-42D9-9EE9-D598A8B74C9D}.Release|x86.ActiveCfg = Release|Win32
+		{92340A46-E2BD-42D9-9EE9-D598A8B74C9D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
