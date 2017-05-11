@@ -59,6 +59,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BessieComeHome", "BessieCom
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FractionsToDecimals", "FractionsToDecimals\FractionsToDecimals.vcxproj", "{3DAD1D3B-BF95-4C11-B813-B8F978F83584}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Agri-Net", "Agri-Net\Agri-Net.vcxproj", "{688DD911-EBD6-4223-A7BA-41F9F8776846}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -291,6 +293,14 @@ Global
 		{3DAD1D3B-BF95-4C11-B813-B8F978F83584}.Release|x64.Build.0 = Release|x64
 		{3DAD1D3B-BF95-4C11-B813-B8F978F83584}.Release|x86.ActiveCfg = Release|Win32
 		{3DAD1D3B-BF95-4C11-B813-B8F978F83584}.Release|x86.Build.0 = Release|Win32
+		{688DD911-EBD6-4223-A7BA-41F9F8776846}.Debug|x64.ActiveCfg = Debug|x64
+		{688DD911-EBD6-4223-A7BA-41F9F8776846}.Debug|x64.Build.0 = Debug|x64
+		{688DD911-EBD6-4223-A7BA-41F9F8776846}.Debug|x86.ActiveCfg = Debug|Win32
+		{688DD911-EBD6-4223-A7BA-41F9F8776846}.Debug|x86.Build.0 = Debug|Win32
+		{688DD911-EBD6-4223-A7BA-41F9F8776846}.Release|x64.ActiveCfg = Release|x64
+		{688DD911-EBD6-4223-A7BA-41F9F8776846}.Release|x64.Build.0 = Release|x64
+		{688DD911-EBD6-4223-A7BA-41F9F8776846}.Release|x86.ActiveCfg = Release|Win32
+		{688DD911-EBD6-4223-A7BA-41F9F8776846}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
