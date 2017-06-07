@@ -10,9 +10,13 @@ LANG: C++11
 #include <queue>
 #include <tuple>
 #include <algorithm>
+#include <unordered_set>
 
 using namespace std;
 
+int code(const vector<int> &v) {
+	return v[0] * 10000000 + v[1] * 1000000 + v[2] * 100000 + v[3] * 10000 + v[4] * 1000 + v[5] * 100 + v[6] * 10 + v[7];
+}
 
 int main() {
 	ofstream fout("msquare.out");
@@ -23,16 +27,18 @@ int main() {
 		fin >> integer;
 		target[a] = integer;
 	}
-	
+
 	vector<int> initial(8);
 	for (int b = 0; b < 8; ++b) {
 		initial[b] = b + 1;
 	}
 
 	queue<tuple<vector<int>, string>> exam;
+	unordered_set<int> seen;
 	// Push first node in 
 	exam.push(make_tuple(initial, ""));
 	auto cur_tuple = exam.front();
+	seen.insert(code(initial));
 
 	while (!(equal(target.begin(), target.begin() + 8, get<0>(cur_tuple).begin()))) {
 		cur_tuple = exam.front();
@@ -47,7 +53,12 @@ int main() {
 		for (int i = 0; i < 8; ++i) {
 			nexta[i] = curr[-1 * i + 7];
 		}
-		exam.push(make_tuple(nexta, sequence + 'A'));
+		int ca = code(nexta);
+		auto ita = seen.find(ca);
+		if (ita == seen.end()) { // we have not already seen this
+			exam.push(make_tuple(nexta, sequence + 'A'));
+			seen.insert(ca);
+		}
 		// Transformation B
 		vector<int> nextb(8);
 		for (int i = 0; i < 8; ++i) {
@@ -64,7 +75,12 @@ int main() {
 				nextb[i] = curr[4];
 			}
 		}
-		exam.push(make_tuple(nextb, sequence + 'B'));
+		int cb = code(nextb);
+		auto itb = seen.find(cb);
+		if (itb == seen.end()) { // we have not already seen this
+			exam.push(make_tuple(nextb, sequence + 'B'));
+			seen.insert(cb);
+		}
 		// Transformation C
 		vector<int> nextc(8);
 		for (int i = 0; i < 8; ++i) {
@@ -84,9 +100,14 @@ int main() {
 				nextc[i] = curr[i];
 			}
 		}
-		exam.push(make_tuple(nextc, sequence + 'C'));
+		int cc = code(nextc);
+		auto itc = seen.find(cc);
+		if (itc == seen.end()) { // we have not already seen this
+			exam.push(make_tuple(nextc, sequence + 'C'));
+			seen.insert(cc);
+		}
 	}
-	
-	cout << (int)get<1>(cur_tuple).length() << endl << get<1>(cur_tuple) << endl;
+
+	fout << (int)get<1>(cur_tuple).length() << endl << get<1>(cur_tuple) << endl;
 	return 0;
 }

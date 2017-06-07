@@ -1,6 +1,7 @@
 /*
 ID: kml111
-PROG: subset
+PROG: sub
+
 LANG: C++11
 */
 #include <iostream>
