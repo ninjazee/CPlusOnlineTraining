@@ -84,6 +84,6 @@ int main() {
 		}
 	} while (i < (int)cows.size() && j > 0 && get<1>(cows[i]) != 0);
 
-	cout << max << endl;
+	fout << max << endl;
 	return 0;
 }
