@@ -85,6 +85,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WhereBessie2", "WhereBessie
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SweetButter", "SweetButter\SweetButter.vcxproj", "{C616D2A2-61E0-4725-B180-7247F727FC87}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RidingTheFences", "RidingTheFences\RidingTheFences.vcxproj", "{066A48CC-B9E2-43B1-BF39-66162EFAB4CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -421,6 +423,14 @@ Global
 		{C616D2A2-61E0-4725-B180-7247F727FC87}.Release|x64.Build.0 = Release|x64
 		{C616D2A2-61E0-4725-B180-7247F727FC87}.Release|x86.ActiveCfg = Release|Win32
 		{C616D2A2-61E0-4725-B180-7247F727FC87}.Release|x86.Build.0 = Release|Win32
+		{066A48CC-B9E2-43B1-BF39-66162EFAB4CC}.Debug|x64.ActiveCfg = Debug|x64
+		{066A48CC-B9E2-43B1-BF39-66162EFAB4CC}.Debug|x64.Build.0 = Debug|x64
+		{066A48CC-B9E2-43B1-BF39-66162EFAB4CC}.Debug|x86.ActiveCfg = Debug|Win32
+		{066A48CC-B9E2-43B1-BF39-66162EFAB4CC}.Debug|x86.Build.0 = Debug|Win32
+		{066A48CC-B9E2-43B1-BF39-66162EFAB4CC}.Release|x64.ActiveCfg = Release|x64
+		{066A48CC-B9E2-43B1-BF39-66162EFAB4CC}.Release|x64.Build.0 = Release|x64
+		{066A48CC-B9E2-43B1-BF39-66162EFAB4CC}.Release|x86.ActiveCfg = Release|Win32
+		{066A48CC-B9E2-43B1-BF39-66162EFAB4CC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
