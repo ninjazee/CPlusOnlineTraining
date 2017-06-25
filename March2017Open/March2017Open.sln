@@ -95,6 +95,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SwitchingOnTheLights", "Swi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HighCardWins", "HighCardWins\HighCardWins.vcxproj", "{4842D16C-81D9-477F-BD4B-E7E38E77F8E3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeOnTheRange", "HomeOnTheRange\HomeOnTheRange.vcxproj", "{09464A24-4DAD-4101-AAAD-FEF6587A720D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -471,6 +473,14 @@ Global
 		{4842D16C-81D9-477F-BD4B-E7E38E77F8E3}.Release|x64.Build.0 = Release|x64
 		{4842D16C-81D9-477F-BD4B-E7E38E77F8E3}.Release|x86.ActiveCfg = Release|Win32
 		{4842D16C-81D9-477F-BD4B-E7E38E77F8E3}.Release|x86.Build.0 = Release|Win32
+		{09464A24-4DAD-4101-AAAD-FEF6587A720D}.Debug|x64.ActiveCfg = Debug|x64
+		{09464A24-4DAD-4101-AAAD-FEF6587A720D}.Debug|x64.Build.0 = Debug|x64
+		{09464A24-4DAD-4101-AAAD-FEF6587A720D}.Debug|x86.ActiveCfg = Debug|Win32
+		{09464A24-4DAD-4101-AAAD-FEF6587A720D}.Debug|x86.Build.0 = Debug|Win32
+		{09464A24-4DAD-4101-AAAD-FEF6587A720D}.Release|x64.ActiveCfg = Release|x64
+		{09464A24-4DAD-4101-AAAD-FEF6587A720D}.Release|x64.Build.0 = Release|x64
+		{09464A24-4DAD-4101-AAAD-FEF6587A720D}.Release|x86.ActiveCfg = Release|Win32
+		{09464A24-4DAD-4101-AAAD-FEF6587A720D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
