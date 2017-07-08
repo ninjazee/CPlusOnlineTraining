@@ -9,14 +9,19 @@ LANG: C++11
 #include <tuple>
 #include <unordered_map>
 #include <string>
+#include <limits>
 
 using namespace std;
 
-void dijkstra(vector<vector<tuple<int, int>>> &adjList, const vector<int> &segmentLengths, const unordered_map<string, int> &corners) {
-	int graphsize = (int)corners.size();
-	int nodesvisited = 0;
-	while (nodesvisited < graphsize) {
+void dijkstra(vector<vector<tuple<int, int>>> &adjList, const vector<int> &segmentLengths, const unordered_map<string, int> &corners, const int cornerCount) {
+	vector<int> distance(cornerCount, numeric_limits<int>::max() / 10);
+	vector<bool> visited(cornerCount, false);
+	vector<int> parent(cornerCount, -1);
+	for (int i = 0; i < cornerCount; ++i) { // i is the starting node
+		int nodesvisited = 0;
+		while (nodesvisited < cornerCount) {
 
+		}
 	}
 }
 
@@ -91,25 +96,49 @@ int main() {
 					}
 				}
 			}
-		}
+		}                                                                                                                                                                                                                                            
 		if (foundNewCornerO) {
 			cornerCount += 1;
 		}
 	}
 
 	int graphsize = (int)corners.size();
-	vector<vector<string>> cornerEdges(graphsize);
+	vector<vector<string>> cornerEdges(cornerCount);
 	for (auto it : corners) {
 		cornerEdges[it.second].push_back(it.first);
 	}
-	
-	vector<vector<tuple<int, int>>> adjList(graphsize);
-	for (int i = 0; i < graphsize; ++i) {
-		for (int j = 0; j < graphsize; ++j) {
-			if (i != j) {
 
+	vector<vector<int>> edgeList(n, vector<int>(2, -1));
+	for (int i = 0; i < cornerCount; ++i) {
+		for (string j : cornerEdges[i]) {
+			if (edgeList[j[0] - '0'][0] == -1) {
+				edgeList[j[0] - '0'][0] = i;
+			}
+			else {
+				if (edgeList[j[0] - '0'][1] == -1) {
+					if (edgeList[j[0] - '0'][0] != i) {
+						edgeList[j[0] - '0'][1] = i;
+					}
+				}
+			}
+
+			if (edgeList[j[1] - '0'][0] == -1) {
+				edgeList[j[1] - '0'][0] = i;
+			}
+			else {
+				if (edgeList[j[1] - '0'][1] == -1) {
+					if (edgeList[j[1] - '0'][0] != i) {
+						edgeList[j[1] - '0'][1] = i;
+					}
+				}
 			}
 		}
+	}
+	
+	vector<vector<tuple<int, int>>> adjList(cornerCount);
+	for (int i = 0; i < n; ++i) {
+		adjList[edgeList[i][0]].push_back(make_tuple(edgeList[i][1], segmentLengths[i]));
+		adjList[edgeList[i][1]].push_back(make_tuple(edgeList[i][0], segmentLengths[i]));
 	}
 	return 0;
 }
