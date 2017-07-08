@@ -121,6 +121,7 @@
     <ClCompile Include="bfs.cpp" />
     <ClCompile Include="example.cpp" />
     <ClCompile Include="floodFillDFS.cpp" />
+    <ClCompile Include="floydWarshall.cpp" />
     <ClCompile Include="printGrid.cpp" />
     <ClCompile Include="tupleCompare.cpp" />
   </ItemGroup>
