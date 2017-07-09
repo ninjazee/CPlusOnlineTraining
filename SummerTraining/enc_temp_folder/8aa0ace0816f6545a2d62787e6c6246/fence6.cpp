@@ -183,6 +183,6 @@ int main() {
 	}
 
 	int retVal = findShortestLoops(adjList, edgeList);
-	fout << retVal << endl;
+	cout << retVal << endl;
 	return 0;
 }
