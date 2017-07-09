@@ -44,6 +44,10 @@ int dijkstra(const vector<unordered_map<int, int>> &adjList, vector<int> &distan
 int findShortestLoops( vector<unordered_map<int, int>> &adjList, const vector<vector<int>> &edgeList) {
 	int cornerCount = (int)adjList.size();
 	int best = numeric_limits<int>::max() / 10;
+	vector<int> distance(cornerCount, numeric_limits<int>::max() / 10);
+	vector<bool> visited(cornerCount, false);
+	vector<int> parent(cornerCount, -1);
+
 	for (int i = 0; i < (int)edgeList.size(); ++i) { // for every edge
 		// erase it from the adjacency list
 		int p1 = edgeList[i][0];
@@ -52,10 +56,10 @@ int findShortestLoops( vector<unordered_map<int, int>> &adjList, const vector<ve
 		int edgeLength = it->second;
 		adjList[p1].erase(p2);
 		adjList[p2].erase(p1);
+		fill(distance.begin(), distance.end(), numeric_limits<int>::max() / 10);
+		fill(visited.begin(), visited.end(), false);
+		fill(parent.begin(), parent.end(), -1);
 
-		vector<int> distance(cornerCount, numeric_limits<int>::max() / 10);
-		vector<bool> visited(cornerCount, false);
-		vector<int> parent(cornerCount, -1);
 		int loopDist = dijkstra(adjList, distance, visited, parent, p1, p2);
 		if (loopDist + edgeLength < best) {
 			best = loopDist + edgeLength;
@@ -72,7 +76,7 @@ int main() {
 	int n;
 	fin >> n;
 	vector<int> segmentLengths(n);
-	unordered_map<string, int> corners;
+	unordered_map<int, int> corners;
 	int cornerCount = 0;
 	for (int a = 0; a < n; ++a) {
 		int s, l, n1, n2;
@@ -98,7 +102,7 @@ int main() {
 						num1 = firstends[y];
 						num2 = firstends[x];
 					}
-					string firstendstr = to_string(num1) + to_string(num2);
+					int firstendstr = num1 * 1000 + num2;
 					if (corners.find(firstendstr) == corners.end()) {
 						corners[firstendstr] = cornerCount;
 						foundNewCornerF = true;
@@ -130,7 +134,7 @@ int main() {
 						num1 = otherends[y];
 						num2 = otherends[x];
 					}
-					string otherendstr = string(1,'0'+num1) + string(1,'0'+num2);
+					int otherendstr = num1 * 1000 + num2;
 					if (corners.find(otherendstr) == corners.end()) {
 						corners[otherendstr] = cornerCount;
 						foundNewCornerO = true;
@@ -144,32 +148,32 @@ int main() {
 	}
 
 	int graphsize = (int)corners.size();
-	vector<vector<string>> cornerEdges(cornerCount);
+	vector<vector<int>> cornerEdges(cornerCount);
 	for (auto it : corners) {
 		cornerEdges[it.second].push_back(it.first);
 	}
 
 	vector<vector<int>> edgeList(n, vector<int>(2, -1));
 	for (int i = 0; i < cornerCount; ++i) {
-		for (string j : cornerEdges[i]) {
-			if (edgeList[j[0] - '0'][0] == -1) {
-				edgeList[j[0] - '0'][0] = i;
+		for (int j : cornerEdges[i]) {
+			if (edgeList[j / 1000][0] == -1) {
+				edgeList[j / 1000][0] = i;
 			}
 			else {
-				if (edgeList[j[0] - '0'][1] == -1) {
-					if (edgeList[j[0] - '0'][0] != i) {
-						edgeList[j[0] - '0'][1] = i;
+				if (edgeList[j / 1000][1] == -1) {
+					if (edgeList[j / 1000][0] != i) {
+						edgeList[j / 1000][1] = i;
 					}
 				}
 			}
 
-			if (edgeList[j[1] - '0'][0] == -1) {
-				edgeList[j[1] - '0'][0] = i;
+			if (edgeList[j % 1000][0] == -1) {
+				edgeList[j % 1000][0] = i;
 			}
 			else {
-				if (edgeList[j[1] - '0'][1] == -1) {
-					if (edgeList[j[1] - '0'][0] != i) {
-						edgeList[j[1] - '0'][1] = i;
+				if (edgeList[j % 1000][1] == -1) {
+					if (edgeList[j % 1000][0] != i) {
+						edgeList[j % 1000][1] = i;
 					}
 				}
 			}
@@ -184,5 +188,7 @@ int main() {
 
 	int retVal = findShortestLoops(adjList, edgeList);
 	fout << retVal << endl;
+	fin.close();
+	fout.close(); 
 	return 0;
 }
