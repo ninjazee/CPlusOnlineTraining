@@ -43,26 +43,27 @@ int fordFulkerson(const vector<vector<int>> &edgeList, const vector<int> &edgeLe
 }
 */
 
-int bfs(const vector<unordered_map<int, int>> &adjList, vector<int> &prevNode, vector<bool> &visited, vector<vector<int>> &flow) {
+int bfs(const int start, const int end, vector<unordered_map<int, int>> &adjList, vector<int> &prevNode) {
 	int m = (int)prevNode.size();
 	vector<int> capacityPath(m);
-	capacityPath[0] = numeric_limits<int>::max() / 10;
+	capacityPath[start] = numeric_limits<int>::max() / 10;
 	queue<int> exam;
-	exam.push(0); // add the starting place (the pond) to the queue
+	exam.push(start); // add the starting place (the pond) to the queue
 	while (!exam.empty()) {
 		auto curr = exam.front();
 		exam.pop();
 		for (auto i : adjList[curr]) { // for all neighbors of current node
 			int nextNode = i.first;
 			int nextLength = i.second;
-			if ((nextLength + flow[curr][nextNode] > 0) && (prevNode[nextNode] = -1)) { // we have not seen this node before and there is available capacity
-				prevNode[nextNode] = curr;
-				capacityPath[nextNode] = min(capacityPath[curr], nextLength - flow[curr][nextNode]);
-				if (nextNode != m - 1) {
+			if ((nextLength > 0) && (prevNode[nextNode] == -1)) { // we have not seen this node before and there is available capacity
+				prevNode[nextNode] = curr; // change its parent to the current node
+				capacityPath[nextNode] = min(capacityPath[curr], nextLength); 
+				if (nextNode != end) {
 					exam.push(nextNode);
 				}
 				else {
-					return capacityPath[m - 1];
+					// we found the stream
+					return capacityPath[end];
 				}
 			}
 		}
@@ -70,25 +71,25 @@ int bfs(const vector<unordered_map<int, int>> &adjList, vector<int> &prevNode, v
 	return 0;
 }
 
-int edmondsKarp(const vector<unordered_map<int, int>> &adjList, vector<vector<int>> &flow) {
-	int m = (int)flow.size();
-	int f = 0;
+int edmondsKarp(const int start, const int end, vector<unordered_map<int, int>> &adjList) {
+	int m = (int)adjList.size();
+	int f = 0; // initial max flow is 0
 	bool foreverBool = true;
 	while (foreverBool) {
 		vector<int> prevNode(m, -1);
-		vector<bool> visited(m, false);
-		int search = bfs(adjList, prevNode, visited, flow);
+		prevNode[start] = -2;
+		int search = bfs(start, end, adjList, prevNode);
 		if (search == 0) {
 			foreverBool = false;
 			break;
 		}
 		f += search;
 		// backtrack search and write flow;
-		int curNode = m - 1;
-		while (curNode != 0) {
+		int curNode = end;
+		while (curNode != start) {
 			int lastNode = prevNode[curNode];
-			flow[curNode][lastNode] += search;
-			flow[lastNode][curNode] -= search;
+			adjList[curNode][lastNode] += search;
+			adjList[lastNode][curNode] -= search;
 			curNode = lastNode;
 		}
 	}
@@ -113,9 +114,9 @@ int main() {
 	vector<unordered_map<int, int>> adjList(m);
 	for (int i = 0; i < n; ++i) {
 		adjList[edgeList[i][0]][edgeList[i][1]] = edgeCapacities[i];
+		adjList[edgeList[i][1]][edgeList[i][0]] = 0;
 	}
 
-	vector<vector<int>> flow(m, vector<int>(m));
-	fout << edmondsKarp(adjList, flow) << endl;
+	fout << edmondsKarp(0, m - 1, adjList) << endl;
 	return 0;
 }
