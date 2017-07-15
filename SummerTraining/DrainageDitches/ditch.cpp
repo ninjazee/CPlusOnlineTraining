@@ -111,12 +111,26 @@ int main() {
 		edgeCapacities[a] = c;
 	}
 
+	int numIntersections = m;
 	vector<unordered_map<int, int>> adjList(m);
 	for (int i = 0; i < n; ++i) {
-		adjList[edgeList[i][0]][edgeList[i][1]] = edgeCapacities[i];
-		adjList[edgeList[i][1]][edgeList[i][0]] = 0;
+		int p1 = edgeList[i][0];
+		int p2 = edgeList[i][1];
+		if (adjList[p1].find(p2) == adjList[p1].end() && adjList[p2].find(p1) == adjList[p2].end()) { // we don't already have an antiparallel edge
+			adjList[p1][p2] = edgeCapacities[i];
+			adjList[p2][p1] = 0;
+		}
+		else { // we have an antiparallel edge
+			// create a new vertx and reroute the new edge through this vertex.
+			unordered_map<int, int> newVertex;
+			newVertex[p2] = edgeCapacities[i];
+			newVertex[p1] = 0;
+			adjList.push_back(newVertex);
+			adjList[p1][numIntersections] = edgeCapacities[i];
+			adjList[p2][numIntersections] = 0;
+		}
 	}
 
-	fout << edmondsKarp(0, m - 1, adjList) << endl;
+	cout << edmondsKarp(0, m - 1, adjList) << endl;
 	return 0;
 }
