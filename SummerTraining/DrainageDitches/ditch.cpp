@@ -128,9 +128,10 @@ int main() {
 			adjList.push_back(newVertex);
 			adjList[p1][numIntersections] = edgeCapacities[i];
 			adjList[p2][numIntersections] = 0;
+			numIntersections += 1;
 		}
 	}
 
-	cout << edmondsKarp(0, m - 1, adjList) << endl;
+	fout << edmondsKarp(0, m - 1, adjList) << endl;
 	return 0;
 }
