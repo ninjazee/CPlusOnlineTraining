@@ -82,9 +82,9 @@ int main() {
 	ifstream fin("buylow.in");
 	int n;
 	fin >> n;
-	vector<long long> prices(n);
+	vector<int> prices(n);
 	for (int a = 0; a < n; ++a) {
-		long long price;
+		int price;
 		fin >> price;
 		prices[a] = price;
 	}
@@ -94,7 +94,7 @@ int main() {
 		int numTimes = 0;
 		BigNum numComb(1);
 		unordered_set<int> seen;
-		for (int j = 0; j < i; ++j) { // for every number after i
+		for (int j = i-1; j >=0; --j) { // for every number after i
 			if (prices[i] < prices[j]) { // if we can buy on this day (the price on this day is more than the price today)
 				if (get<0>(totals[j]) > numTimes) { // if the number of times we can buy on this day is larger than our current best
 					numTimes = get<0>(totals[j]);
