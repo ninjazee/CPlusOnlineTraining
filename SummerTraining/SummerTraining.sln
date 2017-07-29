@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BuyLowBuyLower", "BuyLowBuy
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StreetRace", "StreetRace\StreetRace.vcxproj", "{67F09561-F245-41ED-BED1-47021A848110}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LetterGame", "LetterGame\LetterGame.vcxproj", "{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -121,6 +123,14 @@ Global
 		{67F09561-F245-41ED-BED1-47021A848110}.Release|x64.Build.0 = Release|x64
 		{67F09561-F245-41ED-BED1-47021A848110}.Release|x86.ActiveCfg = Release|Win32
 		{67F09561-F245-41ED-BED1-47021A848110}.Release|x86.Build.0 = Release|Win32
+		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Debug|x64.ActiveCfg = Debug|x64
+		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Debug|x64.Build.0 = Debug|x64
+		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Debug|x86.ActiveCfg = Debug|Win32
+		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Debug|x86.Build.0 = Debug|Win32
+		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Release|x64.ActiveCfg = Release|x64
+		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Release|x64.Build.0 = Release|x64
+		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Release|x86.ActiveCfg = Release|Win32
+		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
