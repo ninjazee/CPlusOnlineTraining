@@ -27,6 +27,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StreetRace", "StreetRace\St
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LetterGame", "LetterGame\LetterGame.vcxproj", "{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShuttlePuzzle", "ShuttlePuzzle\ShuttlePuzzle.vcxproj", "{CA8DE1EF-5CF1-4F84-8C31-F81678996FBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -131,6 +133,14 @@ Global
 		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Release|x64.Build.0 = Release|x64
 		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Release|x86.ActiveCfg = Release|Win32
 		{9B5DC40D-C59B-4E5F-B13E-8335B2498E9A}.Release|x86.Build.0 = Release|Win32
+		{CA8DE1EF-5CF1-4F84-8C31-F81678996FBE}.Debug|x64.ActiveCfg = Debug|x64
+		{CA8DE1EF-5CF1-4F84-8C31-F81678996FBE}.Debug|x64.Build.0 = Debug|x64
+		{CA8DE1EF-5CF1-4F84-8C31-F81678996FBE}.Debug|x86.ActiveCfg = Debug|Win32
+		{CA8DE1EF-5CF1-4F84-8C31-F81678996FBE}.Debug|x86.Build.0 = Debug|Win32
+		{CA8DE1EF-5CF1-4F84-8C31-F81678996FBE}.Release|x64.ActiveCfg = Release|x64
+		{CA8DE1EF-5CF1-4F84-8C31-F81678996FBE}.Release|x64.Build.0 = Release|x64
+		{CA8DE1EF-5CF1-4F84-8C31-F81678996FBE}.Release|x86.ActiveCfg = Release|Win32
+		{CA8DE1EF-5CF1-4F84-8C31-F81678996FBE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
