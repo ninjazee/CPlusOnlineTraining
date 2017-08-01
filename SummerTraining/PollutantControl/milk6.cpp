@@ -79,7 +79,6 @@ int main() {
 		int s, e, c;
 		fin >> s >> e >> c;
 		adjList[s - 1][e - 1] = c * 10000000 + a;
-		adjList[e - 1][s - 1] = 0;
 		adjMatrix[s - 1][e - 1] = a + 1;
 	}
 
@@ -98,7 +97,7 @@ int main() {
 			// add it to the queue
 			int node = i.first;
 			if (!black[node]) { // we haven't already seen this node
-				if (i.second / 10000000 > 0) { // there is some flow
+				if (i.second > 0) { // there is some flow
 					exam.push(node);
 				}
 			}
@@ -112,7 +111,7 @@ int main() {
 			for (int j = 0; j < n; ++j) { // for every node
 				if (!black[j]) { // if this is not a black node
 					auto found = adjList[j].find(i);
-					if (found != adjList[j].end() && found->second / 10000000 > 0) { // if there is a path here
+					if (found != adjList[j].end() && found->second > 0) { // if there is a path here
 						// add the cost to the cut
 						cut += found->second / 10000000;
 						routes.push_back(adjMatrix[i][j]);
