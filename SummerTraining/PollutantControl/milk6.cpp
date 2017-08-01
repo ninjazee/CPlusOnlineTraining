@@ -68,6 +68,9 @@ int edmondsKarp(const int start, const int end, vector<unordered_map<int, long l
 	return f;
 }
 
+#define C_Multiply	1000000000LL
+#define C_Add	1000000
+
 int main() {
 	ofstream fout("milk6.out");
 	ifstream fin("milk6.in");
@@ -79,11 +82,11 @@ int main() {
 		int s, e;
 		long long c;
 		fin >> s >> e >> c;
-		adjList[s - 1][e - 1] = c * 1000000000LL + 1000000 + a;
+		adjList[s - 1][e - 1] = c * C_Multiply - C_Add - a;
 		adjMatrix[s - 1][e - 1] = a + 1;
 	}
 
-	int maxFlow = edmondsKarp(0, 3, adjList);
+	int maxFlow = edmondsKarp(0, n - 1, adjList);
 
 	// create cut
 	vector<bool> black(n);
@@ -114,7 +117,7 @@ int main() {
 					auto found = adjList[j].find(i);
 					if (found != adjList[j].end() && found->second > 0) { // if there is a path here
 						// add the cost to the cut
-						cut += found->second / 1000000000;
+						cut += (found->second + C_Add * 2) / C_Multiply;
 						routes.push_back(adjMatrix[i][j]);
 					}
 				}
