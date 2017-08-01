@@ -76,9 +76,10 @@ int main() {
 	vector<unordered_map<int, long long>> adjList(n);
 	vector<vector<int>> adjMatrix(n, vector<int>(n));
 	for (int a = 0; a < m; ++a) {
-		int s, e, c;
+		int s, e;
+		long long c;
 		fin >> s >> e >> c;
-		adjList[s - 1][e - 1] = c * 10000000 + a;
+		adjList[s - 1][e - 1] = c * 1000000000LL + 1000000 + a;
 		adjMatrix[s - 1][e - 1] = a + 1;
 	}
 
@@ -113,7 +114,7 @@ int main() {
 					auto found = adjList[j].find(i);
 					if (found != adjList[j].end() && found->second > 0) { // if there is a path here
 						// add the cost to the cut
-						cut += found->second / 10000000;
+						cut += found->second / 1000000000;
 						routes.push_back(adjMatrix[i][j]);
 					}
 				}
@@ -122,11 +123,11 @@ int main() {
 	}
 
 	int numRoutes = (int)routes.size();
-	fout << cut << " " << numRoutes << endl;
-	fout << routes[0];
+	cout << cut << " " << numRoutes << endl;
+	cout << routes[0];
 	for (int x = 1; x < numRoutes; ++x) {
-		fout << " " << routes[x];
+		cout << " " << routes[x];
 	}
-	fout << endl;
+	cout << endl;
 	return 0;
 }
