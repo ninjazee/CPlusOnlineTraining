@@ -84,25 +84,31 @@ int main() {
 		long long c;
 		fin >> s >> e >> c;
 		if (adjList[s - 1].find(e - 1) == adjList[s - 1].end() && adjList[e - 1].find(s - 1) == adjList[e - 1].end()) { // we don't already have an antiparallel edge
-			adjList[s - 1][e - 1] = c * C_Multiply - C_Add - a;
+			adjList[s - 1][e - 1] = c * C_Multiply + C_Add + a;
 			adjList[e - 1][s - 1] = 0;
 			adjMatrix[s - 1][e - 1] = a + 1;
 		}
 		else { // we have an antiparallel edge
 			// create a new vertx and reroute the new edge through this vertex.
 			unordered_map<int, long long> newVertex;
-			newVertex[e - 1] = c * C_Multiply - C_Add - a;
+			newVertex[e - 1] = c * C_Multiply + C_Add + a;
 			newVertex[s - 1] = 0;
 			adjList.push_back(newVertex);
-			adjList[s - 1][numWarehouses] = c * C_Multiply - C_Add - a;
+			adjList[s - 1][numWarehouses] = c * C_Multiply + C_Add + a;
 			adjList[e - 1][numWarehouses] = 0;
+			adjMatrix[s - 1][e - 1] = a + 1;
 			numWarehouses += 1;
 		}
 		
 	}
 
 
-	int maxFlow = edmondsKarp(0, n - 1, adjList);
+	long long maxFlow = edmondsKarp(0, n - 1, adjList);
+
+	if (maxFlow == 0) {
+		fout << 0 << " " << 0 << endl;
+		return 0;
+	}
 
 	// create cut
 	vector<bool> black(numWarehouses);
@@ -117,7 +123,7 @@ int main() {
 			// add it to the queue
 			int node = i.first;
 			if (!black[node]) { // we haven't already seen this node
-				if ((i.second + C_Add * 2) / C_Multiply > 0) { // there is some flow
+				if (i.second > 0) { // there is some flow
 					exam.push(node);
 				}
 			}
