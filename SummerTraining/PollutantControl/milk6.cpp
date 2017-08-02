@@ -142,11 +142,11 @@ int main() {
 	}
 
 	int numRoutes = (int)routes.size();
-	cout << cut << " " << numRoutes << endl;
-	cout << routes[0];
+	fout << cut << " " << numRoutes << endl;
+	fout << routes[0];
 	for (int x = 1; x < numRoutes; ++x) {
-		cout << " " << routes[x];
+		fout << " " << routes[x];
 	}
-	cout << endl;
+	fout << endl;
 	return 0;
 }
