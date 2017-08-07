@@ -130,6 +130,35 @@ void findOrder(const vector<unordered_set<int>> &onTopList, const vector<int> &n
 	}
 }
 
+
+void findOrderNew(const vector<unordered_set<int>> &onTopList, vector<int> &numArrows, vector<string> &order, vector<bool> &seen, const vector<bool> &exists, const string curorder, const int level) 
+{
+	if ( level ==0 )
+	{
+		order.push_back(curorder);
+		return; 
+	}
+
+	for (int i = 0; i < 26; ++i) { // find the start node
+		if (exists[i] && !seen[i] ) {
+			if (numArrows[i] == 0) { // we found one on top
+				seen[i] = true; 
+				string neworder = curorder; 
+				neworder.push_back('A' + i);
+				for (auto it : onTopList[i]) {
+					numArrows[it] -= 1;
+				}
+				findOrderNew(onTopList, numArrows, order, seen, exists, neworder, level-1);
+				seen[i] = false; 
+				for (auto it : onTopList[i]) {
+					numArrows[it] += 1;
+				}
+			}
+		}
+	}
+}
+
+
 int main() {
 	ofstream fout("frameup.out");
 	ifstream fin("frameup.in");
@@ -234,13 +263,16 @@ int main() {
 			numArrows[it] += 1;
 		}
 	}
+	vector<string> order;
+	vector<bool> seen(26, false);
+	/*
 	vector<vector<int>> arrowFrames(26,vector<int>());
 	for (int j = 0; j < 26; ++j) {
 		arrowFrames[numArrows[j]].push_back(j);
 	}
 
 	// find the order of the frames
-	vector<string> order;
+	
 	int numOfCombs = 0;
 	vector<vector<bool>> seen;
 	for (int i = 0; i < 26; ++i) { // find the start node
@@ -254,6 +286,9 @@ int main() {
 			}
 		}
 	}
+	*/
+	findOrderNew(onTopList, numArrows, order, seen, exists, "", numFrames);
+
 	for (int i = 0; i < (int)order.size(); ++i) {
 		reverse(order[i].begin(), order[i].end());
 	}
