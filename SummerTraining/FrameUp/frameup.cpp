@@ -13,6 +13,24 @@ LANG: C++11
 
 using namespace std;
 
+void findCombinations(const vector<int> v, const int curr, vector<bool> &picked, const int comb, vector<vector<int>> &combinations) {
+	int vSize = (int)v.size();
+	picked[curr] = true;
+	combinations[comb].push_back(v[curr]);
+	vector<int> cComb(combinations[comb]);
+	int tally = 0;
+	for (int i = 0; i < vSize; ++i) {
+		if (!picked[i]) { // if we haven't already picked this one
+			if (tally > 0) {
+				combinations.push_back(cComb);
+			}
+			findCombinations(v, i, picked, comb + tally, combinations);
+			tally += 1;
+		}
+	}
+	picked[curr] = false;
+}
+
 void findOrder(const vector<unordered_set<int>> &onTopList, const vector<int> &numArrows, const vector<vector<int>> &arrowNums, vector<string> &order, vector<vector<bool>> &seen, const vector<bool> &exists, const int combNum, int &numOfCombs, const int node) {
 	int leastArrowNum = numeric_limits<int>::max();
 	vector<int> leastArrowNode;
@@ -30,7 +48,7 @@ void findOrder(const vector<unordered_set<int>> &onTopList, const vector<int> &n
 			leastArrowNode.push_back(curr);
 		}
 	}
-	
+
 	int otherArrowNum = (int)arrowNums[numArrows[node]].size();
 	vector<int> sameLevels;
 	if (otherArrowNum > 1) { // there are other frames with the same number of arrows
@@ -40,7 +58,7 @@ void findOrder(const vector<unordered_set<int>> &onTopList, const vector<int> &n
 					if (!seen[combNum][arrowNums[numArrows[node]][i]]) {
 						if (exists[arrowNums[numArrows[node]][i]]) {
 							sameLevels.push_back(arrowNums[numArrows[node]][i]);
-							order[combNum].push_back(char(arrowNums[numArrows[node]][i] + 'A'));
+							//order[combNum].push_back(char(arrowNums[numArrows[node]][i] + 'A'));
 							seen[combNum][arrowNums[numArrows[node]][i]] = true;
 						}
 					}
@@ -48,18 +66,65 @@ void findOrder(const vector<unordered_set<int>> &onTopList, const vector<int> &n
 			}
 		}
 	}
+	//sameLevels.push_back(node);
+	int numSameLevels = (int)sameLevels.size();
+	vector<bool> picked(numSameLevels, false);
+	vector<vector<int>> combinations;
+	for (int i = 0; i < numSameLevels; ++i) {
+		combinations.push_back(vector<int>());
+		findCombinations(sameLevels, i, picked, (int)combinations.size() - 1, combinations);
+	}
+	int sameLevelsComb = (int)combinations.size();
 
-
-	if (leastArrowNum < numeric_limits<int>::max()) { // we haven't reached the end node
-		for (int i = 0; i < (int)leastArrowNode.size(); ++i) {
-			if (i == 0) { // this is the first so we will make it part of the original strain
-				findOrder(onTopList, numArrows, arrowNums, order, seen, exists, combNum + i, numOfCombs, leastArrowNode[i]);
+	for (int i = 0; i < (int)leastArrowNode.size(); ++i) {
+		if (i == 0) { // this is the first so we will make it part of the original strain
+			if (sameLevelsComb > 0) {
+				for (int j = 0; j < sameLevelsComb; ++j) { // for every of the sameLevels combinations
+					// use them
+					if (j > 0) {
+						order.push_back(currentComb);
+						numOfCombs += 1;
+						seen.push_back(newSeenVect);
+					}
+					for (int k = 0; k < numSameLevels; ++k) {
+						order[numOfCombs - 1].push_back(char(combinations[j][k] + 'A'));
+					}
+					findOrder(onTopList, numArrows, arrowNums, order, seen, exists, numOfCombs - 1, numOfCombs, leastArrowNode[i]);
+				}
 			}
-			else { // this is an extra strain
+			else {
+				findOrder(onTopList, numArrows, arrowNums, order, seen, exists, numOfCombs - 1, numOfCombs, leastArrowNode[i]);
+			}
+		}
+		else { // this is an extra strain
+			if (sameLevelsComb > 0) {
+				for (int j = 0; j < sameLevelsComb; ++j) {
+					order.push_back(currentComb);
+					numOfCombs += 1;
+					seen.push_back(newSeenVect);
+					for (int k = 0; k < numSameLevels; ++k) {
+						order[numOfCombs - 1].push_back(char(combinations[j][k] + 'A'));
+					}
+					findOrder(onTopList, numArrows, arrowNums, order, seen, exists, numOfCombs - 1, numOfCombs, leastArrowNode[i]);
+				}
+			}
+			else {
 				order.push_back(currentComb);
 				numOfCombs += 1;
 				seen.push_back(newSeenVect);
-				findOrder(onTopList, numArrows, arrowNums, order, seen, exists, combNum + i, numOfCombs, leastArrowNode[i]);
+				findOrder(onTopList, numArrows, arrowNums, order, seen, exists, numOfCombs - 1, numOfCombs, leastArrowNode[i]);
+			}
+		}
+	}
+	if ((int)leastArrowNode.size() == 0 && sameLevelsComb > 0) { // we reached the end but there are still same level nodes
+		for (int j = 0; j < sameLevelsComb; ++j) {
+			if (j > 0) {
+				order.push_back(currentComb);
+				numOfCombs += 1;
+				seen.push_back(newSeenVect);
+			}
+			for (int k = 0; k < numSameLevels; ++k) {
+				order[combNum + j].push_back(char(combinations[j][k] + 'A'));
 			}
 		}
 	}
@@ -196,7 +261,7 @@ int main() {
 
 	// print
 	for (int i = 0; i < (int)order.size(); ++i) {
-		cout << order[i] << endl;
+		fout << order[i] << endl;
 	}
 	return 0;
 }
