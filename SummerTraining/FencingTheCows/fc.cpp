@@ -13,6 +13,8 @@ LANG: C++11
 
 using namespace std;
 
+#define PI 3.14159265
+
 template<int M, template<typename> class F = std::less>
 struct TupleCompare
 {
@@ -49,7 +51,7 @@ int main() {
 	for (int i = 0; i < n; ++i) {
 		double xi = get<0>(grazingSpots[i]);
 		double yi = get<1>(grazingSpots[i]);
-		get<1>(anglePerm[i]) = atan2(yi - midy, xi - midx);
+		get<1>(anglePerm[i]) = atan2(yi - midy, xi - midx) * 180.0 / PI;
 		get<0>(anglePerm[i]) = i;
 	}
 
