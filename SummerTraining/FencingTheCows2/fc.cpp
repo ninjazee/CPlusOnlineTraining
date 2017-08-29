@@ -62,7 +62,7 @@ void grahamScan(const vector<tuple<double, double>> &grazingSpots, vector<tuple<
 	for (int i = 1; i < n; ++i) {
 		double xi = get<0>(grazingSpots[i]);
 		double yi = get<1>(grazingSpots[i]);
-		double tanVal = atan2(yi - get<0>(p[0]), xi - get<0>(p[0])) * 180.0 / PI;
+		double tanVal = atan2(yi - get<1>(p[0]), xi - get<0>(p[0])) * 180.0 / PI;
 		if (seen.find(tanVal) == seen.end()) {
 			get<1>(angle[i]) = tanVal;
 			get<0>(angle[i]) = i;
@@ -91,7 +91,7 @@ void grahamScan(const vector<tuple<double, double>> &grazingSpots, vector<tuple<
 	//s.push_back(p[2]);
 	for (int i = 2; i < n; ++i) {
 		// while there is a convex angle
-		while (zcrossprod2(s[(int)s.size() - 2], s[(int)s.size() - 1], p[i]) < 0) {
+		while ((int)s.size() >= 2 && zcrossprod2(s[(int)s.size() - 2], s[(int)s.size() - 1], p[i]) < 0) {
 			s.pop_back();
 		}
 		s.push_back(p[i]);
