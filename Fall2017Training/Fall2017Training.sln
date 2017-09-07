@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fall2017Training", "Fall201
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Moocast", "Moocast\Moocast.vcxproj", "{3D831DA5-08F7-46A3-9F89-B3E145CC7361}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CowChecklist", "CowChecklist\CowChecklist.vcxproj", "{73814F3E-31E1-4F7D-A46D-C24024469C92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{3D831DA5-08F7-46A3-9F89-B3E145CC7361}.Release|x64.Build.0 = Release|x64
 		{3D831DA5-08F7-46A3-9F89-B3E145CC7361}.Release|x86.ActiveCfg = Release|Win32
 		{3D831DA5-08F7-46A3-9F89-B3E145CC7361}.Release|x86.Build.0 = Release|Win32
+		{73814F3E-31E1-4F7D-A46D-C24024469C92}.Debug|x64.ActiveCfg = Debug|x64
+		{73814F3E-31E1-4F7D-A46D-C24024469C92}.Debug|x64.Build.0 = Debug|x64
+		{73814F3E-31E1-4F7D-A46D-C24024469C92}.Debug|x86.ActiveCfg = Debug|Win32
+		{73814F3E-31E1-4F7D-A46D-C24024469C92}.Debug|x86.Build.0 = Debug|Win32
+		{73814F3E-31E1-4F7D-A46D-C24024469C92}.Release|x64.ActiveCfg = Release|x64
+		{73814F3E-31E1-4F7D-A46D-C24024469C92}.Release|x64.Build.0 = Release|x64
+		{73814F3E-31E1-4F7D-A46D-C24024469C92}.Release|x86.ActiveCfg = Release|Win32
+		{73814F3E-31E1-4F7D-A46D-C24024469C92}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

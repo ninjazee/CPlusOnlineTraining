@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{023C0502-1866-4AA3-AC66-5F87B2ECB9C5}</ProjectGuid>
-    <RootNamespace>Fall2017Training</RootNamespace>
+    <ProjectGuid>{73814F3E-31E1-4F7D-A46D-C24024469C92}</ProjectGuid>
+    <RootNamespace>CowChecklist</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -118,17 +118,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bfs.cpp" />
-    <ClCompile Include="dynamicProgramming.cpp" />
-    <ClCompile Include="edmondsKarp.cpp" />
-    <ClCompile Include="example.cpp" />
-    <ClCompile Include="floodFillDFS.cpp" />
-    <ClCompile Include="floydWarshall.cpp" />
-    <ClCompile Include="grahamScan.cpp" />
-    <ClCompile Include="minimumSpanningTree.cpp" />
-    <ClCompile Include="printGrid.cpp" />
-    <ClCompile Include="transformations.cpp" />
-    <ClCompile Include="tupleCompare.cpp" />
+    <ClCompile Include="checklist.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="checklist.in" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
